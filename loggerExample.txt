@@ -1,0 +1,29 @@
+import logging
+from personScript.person import person
+from personScript.employee import employee
+
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s',
+                    datefmt='%m-%d %H:%M',
+                    filename='main.log',
+                    filemode='w')
+
+console = logging.StreamHandler()
+formatter = logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s')
+console.setFormatter(formatter)
+logging.getLogger('').addHandler(console)
+
+logging.info('Start creating a person.....')
+x = person("dana", "florero", 4, 123)
+logging.debug(x.get_full_name())
+logging.info("person has been created")
+logging.info("Start creating an Employee......")
+y = employee("mauricio", "zelaya", 37, 12345, 777, "QE")
+logging.debug(y.get_employee_name() + " - " + str(y.get_employee_id()) + " - " + y.get_employee_department())
+logging.info("Employee has been created")
+
+print(x.get_full_name())
+print("\n\n###################################\n\n")
+print("employee ID: %s" % y.get_employee_id())
+print("employee full name: %s" % y.get_employee_name())
+print("work in department: %s" % y.get_employee_department())
